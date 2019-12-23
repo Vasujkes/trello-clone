@@ -1,9 +1,19 @@
-import React from 'react';
-import './index.scss';
+import React from "react";
+import { Card, Panel } from "./components";
+
+import "./index.scss";
 
 function App() {
   return (
-   <div className="hello">hello</div>
+    <div className="App">
+      <Panel
+        items={[
+          { text: "Тестовый текст 1" },
+          { text: "Тестовый текст 2" },
+          { text: "Тестовый текст 3" }
+        ]}
+      />
+    </div>
   );
 }
 

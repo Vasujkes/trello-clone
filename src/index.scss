@@ -5,15 +5,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+  font-size: 14px;
+
 }
 
 html, body, #root {
   height: 100%;
+  box-sizing: border-box;
 }
 #root {
   background-image: url('./assets/photo.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  padding: 20px;
 }
