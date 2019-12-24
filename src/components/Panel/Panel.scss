@@ -4,6 +4,10 @@
     width: 270px;
     margin-left: 12px;
     overflow: hidden;
+    &__title {
+        padding: 12px 12px 0 12px;
+
+    }
     &--empty {
         .add-form {
             margin-top: 12px;

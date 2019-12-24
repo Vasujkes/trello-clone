@@ -5,15 +5,15 @@ import addIcon from "../../assets/add.svg";
 import closeIcon from "../../assets/close.svg";
 
 import "./AddForm.scss";
-const AddForm = () => {
+
+const AddForm = ({ children, isEmptyPanel }) => {
   const [showForm, setShowForm] = useState(false);
   const textareaRef = useRef(null);
 
   useEffect(() => {
-    if(textareaRef.current) {
+    if (textareaRef.current) {
       textareaRef.current.focus();
     }
-   
   }, [showForm]);
 
   return (
@@ -22,10 +22,22 @@ const AddForm = () => {
         <div className="add-form">
           <div className="add-form__input">
             <Card>
-              <textarea placeholder="Введите заголовок для этой карточки" ref={textareaRef} rows="3" />
+              <textarea
+                placeholder={
+                  isEmptyPanel
+                    ? "Введите заголовок для этой карточки"
+                    : "Введите заголовок для этой колонки"
+                }
+                ref={textareaRef}
+                rows="3"
+              />
             </Card>
             <div className="add-form__button">
-              <Button>Добавить карточку</Button>
+              <Button>
+                {isEmptyPanel
+                  ? "Добавить еще одну карточку"
+                  : "Добавить еще одну колонку"}
+              </Button>
               <img
                 onClick={setShowForm.bind(this, false)}
                 className="add-form__button-close"
@@ -42,7 +54,11 @@ const AddForm = () => {
             className="add-form__button-add-btn"
           >
             <img src={addIcon} alt="add icon" />
-            <span>Добавить еще одну карточку</span>
+            <span>
+              {isEmptyPanel
+                ? "Добавить еще одну карточку"
+                : "Добавить еще одну колонку"}
+            </span>
           </div>
         </div>
       )}

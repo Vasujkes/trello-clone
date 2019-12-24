@@ -5,22 +5,26 @@ import classNames from "classnames";
 
 import "./Panel.scss";
 
-const Panel = ({ cards }) => {
+const Panel = ({ title, cards }) => {
   return (
     <div className={classNames("panel", { "panel--empty": !cards })}>
+     {title &&  <div className="panel__title">
+        <b>{title}</b>
+      </div>}
       {cards && (
         <div className="panel__items">
           {cards.map((card, index) => (
-            <Card key={index}>{card.text}</Card>
+            <Card key={index}>{card}</Card>
           ))}
         </div>
       )}
-      <AddForm />
+      <AddForm isEmptyPanel={cards}/>
     </div>
   );
 };
 
 Panel.propTypes = {
-  text: PropTypes.string.isRequired
+  cards: PropTypes.node,
+  title: PropTypes.string
 };
 export default Panel;
