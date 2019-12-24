@@ -7,14 +7,14 @@ function App() {
   return (
     <div className="app">
       <Panel
-        items={[
+        cards={[
           { text: "Тестовый текст 1" },
           { text: "Тестовый текст 2" },
           { text: "Тестовый текст 3" }
         ]}
       />
         <Panel
-        items={null}
+        cards={null}
       />
     </div>
   );

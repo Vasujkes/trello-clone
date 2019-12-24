@@ -1,15 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Card, AddForm } from "../";
+import classNames from "classnames";
 
 import "./Panel.scss";
 
-const Panel = ({ items }) => {
+const Panel = ({ cards }) => {
   return (
-    <div className="panel">
-    {items &&  <div className="panel__items">
-        {items && items.map(card => <Card>{card.text}</Card>)}
-      </div>}
+    <div className={classNames("panel", { "panel--empty": !cards })}>
+      {cards && (
+        <div className="panel__items">
+          {cards.map((card, index) => (
+            <Card key={index}>{card.text}</Card>
+          ))}
+        </div>
+      )}
       <AddForm />
     </div>
   );

@@ -5,13 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 14px;
 
 }
 * {
   outline: none;
 }
-
+button, textarea {
+  font-size: 14px;
+}
 html, body, #root {
   height: 100%;
   box-sizing: border-box;

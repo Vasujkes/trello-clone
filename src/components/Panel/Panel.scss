@@ -4,6 +4,12 @@
     width: 270px;
     margin-left: 12px;
     overflow: hidden;
+    &--empty {
+        .add-form {
+            margin-top: 12px;
+        }
+     
+    }
     &__items {
         padding: 12px 12px 0 12px;
     }
