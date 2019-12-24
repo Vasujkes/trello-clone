@@ -5,13 +5,16 @@ import "./index.scss";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Panel
         items={[
           { text: "Тестовый текст 1" },
           { text: "Тестовый текст 2" },
           { text: "Тестовый текст 3" }
         ]}
+      />
+        <Panel
+        items={null}
       />
     </div>
   );

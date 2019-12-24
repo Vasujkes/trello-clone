@@ -1,33 +1,11 @@
 .panel {
     background: #ebecf0;
     border-radius: 3px;
-
     width: 270px;
-
+    margin-left: 12px;
+    overflow: hidden;
     &__items {
         padding: 12px 12px 0 12px;
-    }
-
-    &__button {
-        &-add-btn {
-            padding: 12px;
-            display: flex;
-            align-items: center;
-            color: #5e6c84;
-            border-radius: 3px;
-            cursor: pointer;
-            img {
-                margin-right: 8px;
-                opacity: 0.3;
-            }
-            &:hover {
-                background-color:darken($color: #ebecf0, $amount: 10);
-                color: darken($color: #5e6c84, $amount: 20);
-                img {
-                    opacity: 0.5;
-                }
-            }
-        }
     }
 
 }
