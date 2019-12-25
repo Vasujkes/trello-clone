@@ -6,8 +6,9 @@ import closeIcon from "../../assets/close.svg";
 
 import "./AddForm.scss";
 
-const AddForm = ({ children, isEmptyPanel }) => {
+const AddForm = ({ panelIndex, children, onAddPanel, onAddCard, isEmptyPanel }) => {
   const [showForm, setShowForm] = useState(false);
+  const [value, setValue] = useState("");
   const textareaRef = useRef(null);
 
   useEffect(() => {
@@ -16,6 +17,8 @@ const AddForm = ({ children, isEmptyPanel }) => {
     }
   }, [showForm]);
 
+  
+
   return (
     <Fragment>
       {showForm ? (
@@ -23,6 +26,8 @@ const AddForm = ({ children, isEmptyPanel }) => {
           <div className="add-form__input">
             <Card>
               <textarea
+                onChange={e => setValue(e.target.value)}
+                value={value}
                 placeholder={
                   isEmptyPanel
                     ? "Введите заголовок для этой карточки"
@@ -33,7 +38,13 @@ const AddForm = ({ children, isEmptyPanel }) => {
               />
             </Card>
             <div className="add-form__button">
-              <Button>
+              <Button
+                onClick={
+                  isEmptyPanel
+                    ? onAddPanel
+                    : onAddCard.bind(this, panelIndex, value)
+                }
+              >
                 {isEmptyPanel
                   ? "Добавить еще одну карточку"
                   : "Добавить еще одну колонку"}

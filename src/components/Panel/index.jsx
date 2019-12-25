@@ -3,22 +3,33 @@ import PropTypes from "prop-types";
 import { Card, AddForm } from "../";
 import classNames from "classnames";
 
+import closeIcon from "../../assets/close.svg";
 import "./Panel.scss";
 
-const Panel = ({ title, cards }) => {
+const Panel = ({ panelIndex, title, cards, onAddPanel, onAddCard }) => {
   return (
     <div className={classNames("panel", { "panel--empty": !cards })}>
-     {title &&  <div className="panel__title">
-        <b>{title}</b>
-      </div>}
-      {cards && (
-        <div className="panel__items">
-          {cards.map((card, index) => (
-            <Card key={index}>{card}</Card>
-          ))}
-        </div>
-      )}
-      <AddForm isEmptyPanel={cards}/>
+      <div className="panel__inner">
+        {title && (
+          <div className="panel__title">
+            <b>{title}</b>
+            <img src={closeIcon} alt="Clear svg icon" />
+          </div>
+        )}
+        {cards && (
+          <div className="panel__items">
+            {cards.map((card, index) => (
+              <Card key={index}>{card}</Card>
+            ))}
+          </div>
+        )}
+        <AddForm
+          panelIndex={panelIndex}
+          isEmptyPanel={!cards}
+          onAddPanel={onAddPanel}
+          onAddCard={onAddCard}
+        />
+      </div>
     </div>
   );
 };

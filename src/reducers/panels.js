@@ -1,7 +1,12 @@
 const initialState = [
   {
     title: "Первый",
-    cards: ["Тестовый текст 1", "Тестовый текст 2", "Тестовый текст 3"]
+    cards: [
+      "Тестовый текст 1",
+      "Тестовый текст 2",
+      "Тестовый текст 3",
+      "Тестовый текст 1"
+    ]
   },
   {
     title: "Второй",
@@ -12,18 +17,15 @@ const initialState = [
 export default (state = initialState, action) => {
   switch (action.type) {
     case "CARDS:ADD":
-      return [
-        ...state,
-        state.items.map((item, index) => {
-          if (action.playload.index === index) {
-            return {
-              ...item,
-              cards: [...item.cards, action.playload.text]
-            };
-          }
-          return item;
-        })
-      ];
+      return state.map((item, index) => {
+        if (action.payload.panelIndex === index) {
+          return {
+            ...item,
+            cards: [...item.cards, action.payload.text]
+          };
+        }
+        return item;
+      });
     case "PANELS:ADD":
       return [...state, action.playload];
     default:
