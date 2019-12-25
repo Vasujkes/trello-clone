@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case "CARDS:ADD":
       return state.map((item, index) => {
-        if (action.payload.panelIndex === index) {
+        if (action.payload.ColumnIndex === index) {
           return {
             ...item,
             cards: [...item.cards, action.payload.text]
@@ -26,8 +26,17 @@ export default (state = initialState, action) => {
         }
         return item;
       });
-    case "PANELS:ADD":
-      return [...state, action.playload];
+    case "COLUMNS:ADD":
+      return [
+        ...state,
+        {
+          title: action.payload,
+          cards: []
+        }
+      ];
+
+      case "COLUMNS:REMOVE":
+      return state.filter((_,index) => action.payload !== index)
     default:
       return state;
   }

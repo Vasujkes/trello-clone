@@ -1,11 +1,11 @@
-.panel {
+.column {
     width: 272px;
     margin: 0 4px;
-  height: calc(100% - 40px);
-  box-sizing: border-box;
-  display: inline-block;
-  vertical-align: top;
-  white-space: nowrap;
+    height: calc(100% - 40px);
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
 
     &__inner {
         background-color: #dfe1e6;
@@ -23,14 +23,20 @@
         align-items: center;
         justify-content: space-between;
         padding: 12px;
-        img {
-            padding: 6px;
-            opacity: 0.4;
-            &:hover {
-                background-color: darken(#dfe1e6, 10);
-                border-radius: 3px;
+
+        &--remove {
+            img {
+                padding: 6px;
+                opacity: 0.4;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: darken(#dfe1e6, 10);
+                    border-radius: 3px;
+                }
             }
         }
+
 
     }
 

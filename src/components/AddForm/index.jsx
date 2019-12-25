@@ -6,7 +6,13 @@ import closeIcon from "../../assets/close.svg";
 
 import "./AddForm.scss";
 
-const AddForm = ({ panelIndex, children, onAddPanel, onAddCard, isEmptyPanel }) => {
+const AddForm = ({
+  ColumnIndex,
+  children,
+  onAddColumn,
+  onAddCard,
+  isEmptyColumn
+}) => {
   const [showForm, setShowForm] = useState(false);
   const [value, setValue] = useState("");
   const textareaRef = useRef(null);
@@ -17,7 +23,15 @@ const AddForm = ({ panelIndex, children, onAddPanel, onAddCard, isEmptyPanel }) 
     }
   }, [showForm]);
 
-  
+  const onAdd = () => {
+    if (isEmptyColumn) {
+      onAddColumn(value);
+    } else {
+      onAddCard(ColumnIndex, value);
+    }
+    setValue("");
+    setShowForm(false);
+  };
 
   return (
     <Fragment>
@@ -29,7 +43,7 @@ const AddForm = ({ panelIndex, children, onAddPanel, onAddCard, isEmptyPanel }) 
                 onChange={e => setValue(e.target.value)}
                 value={value}
                 placeholder={
-                  isEmptyPanel
+                  isEmptyColumn
                     ? "Введите заголовок для этой карточки"
                     : "Введите заголовок для этой колонки"
                 }
@@ -38,14 +52,8 @@ const AddForm = ({ panelIndex, children, onAddPanel, onAddCard, isEmptyPanel }) 
               />
             </Card>
             <div className="add-form__button">
-              <Button
-                onClick={
-                  isEmptyPanel
-                    ? onAddPanel
-                    : onAddCard.bind(this, panelIndex, value)
-                }
-              >
-                {isEmptyPanel
+              <Button onClick={onAdd}>
+                {isEmptyColumn
                   ? "Добавить еще одну карточку"
                   : "Добавить еще одну колонку"}
               </Button>
@@ -66,7 +74,7 @@ const AddForm = ({ panelIndex, children, onAddPanel, onAddCard, isEmptyPanel }) 
           >
             <img src={addIcon} alt="add icon" />
             <span>
-              {isEmptyPanel
+              {isEmptyColumn
                 ? "Добавить еще одну карточку"
                 : "Добавить еще одну колонку"}
             </span>

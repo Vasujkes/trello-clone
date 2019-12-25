@@ -1,8 +1,8 @@
 export default {
-    addCard: (panelIndex, text) => ({
+    addCard: (ColumnIndex, text) => ({
       type: "CARDS:ADD",
       payload: {
-        panelIndex,
+        ColumnIndex,
         text
       }
     })
