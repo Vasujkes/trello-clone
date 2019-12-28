@@ -1,10 +1,16 @@
 export default {
-    addCard: (ColumnIndex, text) => ({
-      type: "CARDS:ADD",
-      payload: {
-        ColumnIndex,
-        text
-      }
-    })
-  };
-  
+  addCard: (columnIndex, text) => ({
+    type: "CARDS:ADD",
+    payload: {
+      columnIndex,
+      text
+    }
+  }),
+  reorderCards: ({ source, destination }) => ({
+    type: "CARDS:REORDER",
+    payload: {
+      source,
+      destination
+    }
+  })
+};

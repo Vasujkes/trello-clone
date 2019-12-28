@@ -1,3 +1,4 @@
+import reorderCards from '../helpers/reorderCards'
 const initialState = [
   {
     title: "Первый",
@@ -18,7 +19,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case "CARDS:ADD":
       return state.map((item, index) => {
-        if (action.payload.ColumnIndex === index) {
+        if (action.payload.columnIndex === index) {
           return {
             ...item,
             cards: [...item.cards, action.payload.text]
@@ -35,8 +36,16 @@ export default (state = initialState, action) => {
         }
       ];
 
-      case "COLUMNS:REMOVE":
-      return state.filter((_,index) => action.payload !== index)
+    case "COLUMNS:REMOVE":
+      return state.filter((_, index) => action.payload !== index);
+    case "CARDS:REORDER": {
+      const { source, destination } = action.payload;
+      return reorderCards({
+        state,
+        source,
+        destination
+      });
+    }
     default:
       return state;
   }

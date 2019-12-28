@@ -2,44 +2,67 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Card, AddForm } from "..";
 import classNames from "classnames";
+import { Droppable } from "react-beautiful-dnd";
 
 import closeIcon from "../../assets/close.svg";
 import "./Column.scss";
 
 const Column = ({
-  ColumnIndex,
+  columnIndex,
   title,
   cards,
   onAddColumn,
   onAddCard,
-  onRemove
+  onRemove,
+  onReorder
 }) => {
   const removeColumn = () => {
-    if(global.confirm("Вы действительно хотите удалить колонку ?")) {
-      onRemove(ColumnIndex)
+    if (global.confirm("Вы действительно хотите удалить колонку ?")) {
+      onRemove(columnIndex);
     }
-  }
-  return (
-    <div className={classNames("column", { "column--empty": !cards })}>
-      <div className="column__inner">
-        {title && (
-          <div className="column__title">
-            <b>{title}</b>
-            <div onClick={removeColumn} className="column__title--remove">
-              <img src={closeIcon} alt="Clear svg icon" />
+  };
+
+  return cards ? (
+    <Droppable type="CARDS" droppableId={`column-${columnIndex}`}>
+      {provided => (
+        <div
+          className="column"
+          {...provided.droppableProps}
+          ref={provided.innerRef}
+        >
+          <div className="column__inner">
+            {title && (
+              <div className="column__title">
+                <b>{title}</b>
+                <div onClick={removeColumn} className="remove-btn">
+                  <img src={closeIcon} alt="Clear svg icon" />
+                </div>
+              </div>
+            )}
+            <div className="column__items">
+              {cards.map((card, index) => (
+                <Card key={index} columnIndex={columnIndex} cardIndex={index}>
+                  {card}
+                </Card>
+              ))}
+              {provided.placeholder}
             </div>
+            <AddForm
+              isEmptyColumn={false}
+              columnIndex={columnIndex}
+              onAddColumn={onAddColumn}
+              onAddCard={onAddCard}
+            />
           </div>
-        )}
-        {cards && (
-          <div className="column__items">
-            {cards.map((card, index) => (
-              <Card key={index}>{card}</Card>
-            ))}
-          </div>
-        )}
+        </div>
+      )}
+    </Droppable>
+  ) : (
+    <div className={"column column--empty"}>
+      <div className="column__inner">
         <AddForm
-          ColumnIndex={ColumnIndex}
-          isEmptyColumn={!cards}
+          isEmptyColumn={true}
+          columnIndex={columnIndex}
           onAddColumn={onAddColumn}
           onAddCard={onAddCard}
         />

@@ -7,7 +7,7 @@ import closeIcon from "../../assets/close.svg";
 import "./AddForm.scss";
 
 const AddForm = ({
-  ColumnIndex,
+  columnIndex,
   children,
   onAddColumn,
   onAddCard,
@@ -27,7 +27,7 @@ const AddForm = ({
     if (isEmptyColumn) {
       onAddColumn(value);
     } else {
-      onAddCard(ColumnIndex, value);
+      onAddCard(columnIndex, value);
     }
     setValue("");
     setShowForm(false);
