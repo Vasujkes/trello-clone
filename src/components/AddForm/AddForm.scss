@@ -5,20 +5,24 @@
     &__input {
         textarea {
             border: 0;
-            padding: 0;margin: 0;
+            padding: 0;
+            margin: 0;
             width: 100%;
             resize: none;
         }
     }
+
     &__button {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        &-close{
+
+        &-close {
             opacity: 0.4;
             cursor: pointer;
-            
+
         }
+
         &-add-btn {
             padding: 12px;
             display: flex;
@@ -27,20 +31,22 @@
             border-radius: 3px;
             cursor: pointer;
             width: 100%;
-      
+
             img {
                 margin-right: 8px;
                 opacity: 0.3;
             }
+
             &:hover {
-                background-color:darken($color: #ebecf0, $amount: 10);
+                background-color: darken($color: #ebecf0, $amount: 10);
                 color: darken($color: #5e6c84, $amount: 20);
+
                 img {
                     opacity: 0.5;
                 }
             }
         }
-    
-        
+
+
     }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Card, AddForm } from "..";
-import classNames from "classnames";
+
 import { Droppable } from "react-beautiful-dnd";
 
 import closeIcon from "../../assets/close.svg";
@@ -14,11 +14,12 @@ const Column = ({
   onAddColumn,
   onAddCard,
   onRemove,
+  onEditText,
   onReorder
 }) => {
   const removeColumn = () => {
     if (global.confirm("Вы действительно хотите удалить колонку ?")) {
-      onRemove(columnIndex);
+    onRemove(columnIndex);
     }
   };
 
@@ -34,14 +35,14 @@ const Column = ({
             {title && (
               <div className="column__title">
                 <b>{title}</b>
-                <div onClick={removeColumn} className="remove-btn">
+                <div onClick={removeColumn} className="column__title--remove">
                   <img src={closeIcon} alt="Clear svg icon" />
                 </div>
               </div>
             )}
             <div className="column__items">
               {cards.map((card, index) => (
-                <Card key={index} columnIndex={columnIndex} cardIndex={index}>
+                <Card key={index} onEditText={onEditText} columnIndex={columnIndex} cardIndex={index}>
                   {card}
                 </Card>
               ))}

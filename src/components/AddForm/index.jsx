@@ -6,13 +6,7 @@ import closeIcon from "../../assets/close.svg";
 
 import "./AddForm.scss";
 
-const AddForm = ({
-  columnIndex,
-  children,
-  onAddColumn,
-  onAddCard,
-  isEmptyColumn
-}) => {
+const AddForm = ({ columnIndex, onAddColumn, onAddCard, isEmptyColumn }) => {
   const [showForm, setShowForm] = useState(false);
   const [value, setValue] = useState("");
   const textareaRef = useRef(null);
@@ -24,13 +18,17 @@ const AddForm = ({
   }, [showForm]);
 
   const onAdd = () => {
-    if (isEmptyColumn) {
-      onAddColumn(value);
+    if (value != "") {
+      if (isEmptyColumn) {
+        onAddColumn(value);
+      } else {
+        onAddCard(columnIndex, value);
+      }
+      setValue("");
+      setShowForm(false);
     } else {
-      onAddCard(columnIndex, value);
+      window.confirm("Введите текст");
     }
-    setValue("");
-    setShowForm(false);
   };
 
   return (

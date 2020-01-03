@@ -1,4 +1,4 @@
-import reorderCards from '../helpers/reorderCards'
+import reorderCards from "../helpers/reorderCards";
 const initialState = [
   {
     title: "Первый",
@@ -24,6 +24,14 @@ export default (state = initialState, action) => {
             ...item,
             cards: [...item.cards, action.payload.text]
           };
+        }
+        return item;
+      });
+    case "TEXT:EDIT":
+     
+      return state.map((item, index) => {
+        if (action.payload.columnIndex === index) {
+          item.cards[action.payload.cardIndex] = action.payload.text
         }
         return item;
       });

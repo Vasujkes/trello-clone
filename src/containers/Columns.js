@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import columnsActions from "../actions/columns";
 import cardAtions from "../actions/cards";
 
-const Columns = ({ items, addColumn, addCard, removeColumn, reorderCards }) => {
+const Columns = ({ items, addColumn,editText, addCard, removeColumn, reorderCards }) => {
   const onDragEnd = result => {
     const { type, source, destination } = result;
     if (
@@ -31,6 +31,7 @@ const Columns = ({ items, addColumn, addCard, removeColumn, reorderCards }) => {
             columnIndex={index}
             onAddColumn={addColumn}
             onAddCard={addCard}
+            onEditText={editText}
             onRemove={removeColumn}
             onReorder={reorderCards}
           />

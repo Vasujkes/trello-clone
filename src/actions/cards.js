@@ -6,6 +6,14 @@ export default {
       text
     }
   }),
+  editText: (columnIndex, cardIndex, text) => ({
+    type: "TEXT:EDIT",
+    payload: {
+      columnIndex,
+      cardIndex,
+      text
+    }
+  }),
   reorderCards: ({ source, destination }) => ({
     type: "CARDS:REORDER",
     payload: {

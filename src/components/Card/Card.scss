@@ -8,4 +8,26 @@
     font-size: 14px;
     white-space: normal;
     cursor: move;
+
+    &-view {
+        display: flex;
+        justify-content: space-between;
+
+        span {
+            flex: 1;
+        }
+        img {
+            padding: 6px;
+            opacity: 0.2;
+            cursor: pointer;
+
+            &:hover {
+                background-color: darken(#dfe1e6, 5);
+                border-radius: 3px;
+                opacity: 0.6;
+            }
+        }
+    }
+
 }
+
