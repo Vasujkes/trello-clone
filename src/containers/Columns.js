@@ -8,7 +8,7 @@ import cardAtions from "../actions/cards";
 
 const Columns = ({ items, addColumn,editText, addCard, removeColumn, reorderCards }) => {
   const onDragEnd = result => {
-    const { type, source, destination } = result;
+    const {  source, destination } = result;
     if (
       !destination ||
       (source.droppableId === destination.droppableId &&

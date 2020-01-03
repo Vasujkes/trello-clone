@@ -18,7 +18,7 @@ const AddForm = ({ columnIndex, onAddColumn, onAddCard, isEmptyColumn }) => {
   }, [showForm]);
 
   const onAdd = () => {
-    if (value != "") {
+    if (value !== "") {
       if (isEmptyColumn) {
         onAddColumn(value);
       } else {
