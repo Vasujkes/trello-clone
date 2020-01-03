@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "../Button";
 
+
 import "./EditCard.scss";
 
 const EditCard = ({ cardIndex, columnIndex, children, onEditText, onSave }) => {
